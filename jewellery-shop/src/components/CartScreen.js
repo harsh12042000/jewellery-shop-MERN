@@ -1,0 +1,136 @@
+import { useContext } from 'react';
+import { Store } from '../Store';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+export default function CartScreen() {
+  const navigate = useNavigate();
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const {
+    cart: { cartItems },
+  } = state;
+
+  const updateCartHandler = async (item, quantity) => {
+    // const { data } = await axios.get(`/api/products/${item._id}`);
+    const response = await fetch(`api/products/${item._id}`);
+    const product = await response.json();
+    
+    if (product.countInStock < quantity) {
+      window.alert('Sorry. Product is out of stock');
+      return;
+    }
+    
+    ctxDispatch({
+      type: 'CART_ADD_ITEM',
+      payload: { ...product, quantity },
+    });
+    
+  };
+  const removeItemHandler = (item) => {
+    ctxDispatch({ type: 'CART_REMOVE_ITEM', payload: item });
+  };
+
+  const checkoutHandler = () => {
+    navigate('/signin?redirect=/shipping');
+  };
+
+  return (
+    <div className='container cart'>
+      <div className="text-centre" style={{ margin: "50px 0 50px 0" }}>
+        <h2>Shopping Cart</h2>
+        <img
+          src={process.env.PUBLIC_URL + "/assets/images/line_star.png"}
+        ></img>
+      </div>
+      <Row>
+        <Col md={8}>
+          {cartItems.length === 0 ? (
+            <h4>
+              Cart is empty. <Link to="/">Go Shopping</Link>
+            </h4>
+          ) : (
+            <ListGroup>
+              {cartItems.map((item) => (
+                <ListGroup.Item key={item._id}>
+                  <Row className="align-items-center">
+                    <Col md={4}>
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="img-fluid rounded img-thumbnail"
+                        style={{"width" : "50%"}}
+                      ></img>{' '}
+                      <Link to={`/products/${item.slug}`}>{item.name}</Link>
+                    </Col>
+                    <Col md={3}>
+                      <Button
+                        onClick={() =>
+                          updateCartHandler(item, item.quantity - 1)
+                        }
+                        variant="light"
+                        disabled={item.quantity === 1}
+                      >
+                        <i className="fas fa-minus-circle"></i>
+                      </Button>{' '}
+                      <span>{item.quantity}</span>{' '}
+                      <Button
+                        variant="light"
+                        onClick={() =>
+                          updateCartHandler(item, item.quantity + 1)
+                        }
+                        disabled={item.quantity === item.countInStock}
+                      >
+                        <i className="fas fa-plus-circle"></i>
+                      </Button>
+                    </Col>
+                    <Col md={3}><h4>&#8377;{item.price}</h4></Col>
+                    <Col md={2}>
+                      <Button
+                        onClick={() => removeItemHandler(item)}
+                        variant="light"
+                      >
+                        <i className="fas fa-trash"></i>
+                      </Button>
+                    </Col>
+                  </Row>
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+          )}
+        </Col>
+        <Col md={4}>
+          <Card>
+            <Card.Body>
+              <ListGroup variant="flush">
+                <ListGroup.Item>
+                  <h3>
+                    Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}{' '}
+                    items) : &#8377;
+                    {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)}
+                  </h3>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <div className="d-grid">
+                    <Button
+                      type="button"
+                      variant="primary"
+                      onClick={checkoutHandler}
+                      disabled={cartItems.length === 0}
+                    >
+                      Proceed to Checkout
+                    </Button>
+                  </div>
+                </ListGroup.Item>
+              </ListGroup>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </div>
+  );
+}

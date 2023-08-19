@@ -1,0 +1,400 @@
+body {
+  margin: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif; */
+    font-family: 'Playfair Display', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(to top, #c6ffdd, #fbd786, #f7797d);
+}
+
+code {
+  /* font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace; */
+    font-family: 'Playfair Display', serif;
+    
+}
+
+.prouduct-img {
+  max-width: 95%;
+}
+
+.rating span {
+  color: rgb(5, 4, 1);
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 275px;
+  height: 275px;
+  margin-bottom: 30px;
+  perspective: 1000px; 
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 275px;
+  height: 275px;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do a horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  transform: rotateY(180deg);
+}
+
+.policy-header h5{
+  margin: 20px 0 20px 0;
+  text-align: left;
+}
+
+.policy-header p {
+  text-align: left;
+}
+
+.contact-area {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+@media only screen and (max-width:768px) {
+  .contact {
+      margin-bottom: 60px;
+  }
+}
+
+.contact input {
+  background: #fff;
+  border: 1px solid #555454;
+  border-radius: 3px;
+  margin: 1% 0 1% 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #232434;
+  font-size: 16px;
+  height: 60px;
+  padding: 5px;
+  width: 100%;
+  font-family: 'poppins', sans-serif;
+  padding-left: 30px;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.contact textarea {
+  background: #fff;
+  margin: 1% 0 1% 0;
+  border: 1px solid #555454;
+  border-radius: 3px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #232434;
+  font-size: 16px;
+  padding: 5px;
+  width: 100%;
+  font-family: 'poppins', sans-serif;
+  padding-left: 30px;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.contact input:focus {
+  background: #fff;
+  border: 1px solid #7564e5;
+  color: #232434;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: 0 none;
+}
+
+.contact textarea:focus {
+  background: #fff;
+  border: 1px solid #7564e5;
+  color: #232434;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: 0 none;
+}
+
+.form-control::placeholder {
+  color: #232434;
+  opacity: 1;
+}
+
+.btn-contact-bg {
+  border-radius: 30px;
+  color: #fff;
+  outline: medium none !important;
+  padding: 15px 27px;
+  text-transform: capitalize;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  background: #7564e5;
+  font-family: 'poppins', sans-serif;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn-contact-bg:hover,
+.btn-contact-bg:focus {
+  background: #232434;
+  color: #fff;
+}
+
+/*START ADDRESS*/
+
+.single_address {
+  overflow: hidden;
+  margin-bottom: 10px;
+  padding-left: 40px;
+}
+
+@media only screen and (max-width:768px) {
+  .single_address {
+      padding-left: 0px;
+  }
+}
+
+.single_address i {
+  background: #f6f6f6;
+  color: #7564e5;
+  border-radius: 30px;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  float: left;
+  margin-right: 14px;
+  font-size: 22px;
+  -webkit-box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.single_address:hover i {
+  background: #7564e5;
+  color: #fff;
+}
+
+.single_address h4 {
+  font-size: 18px;
+  margin-bottom: 0px;
+  overflow: hidden;
+  font-weight: 600;
+}
+
+.single_address p {
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.center-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-bg {
+  background-image: url("https://raw.githubusercontent.com/samikshamalewar01/WPT/main/Mini%20project/1.avif");
+}
+
+
+/* ABout Us */
+.aboutus img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+.aboutus .mb-1 {
+  margin-bottom: 0.25rem!important;
+}
+.aboutus.h5, h5 {
+  font-size: 1.25rem;
+}
+.aboutus a {
+text-decoration:none;    
+}
+.aboutus .team-style07 {
+  background: #fff;
+  text-align: center;
+  padding: 30px;
+  box-shadow: 0px 10px 30px 0px rgb(26 29 72 / 7%);
+  border-radius: 15px;
+  transition: all .3s ease-in-out;
+}
+.aboutus .team-style07 {
+  background: #fff;
+  text-align: center;
+  padding: 30px;
+  box-shadow: 0px 10px 30px 0px rgba(26, 29, 72, 0.07);
+  border-radius: 15px;
+  transition: all .3s ease-in-out
+}
+
+.aboutus .team-style07:hover {
+  background: #892d52
+}
+
+.aboutus .team-style07:hover h3 a,
+.aboutus .team-style07:hover p {
+  color: #fff
+}
+
+.aboutus .team-style07 .team-thumb {
+  position: relative
+}
+
+.aboutus .team-style07 .team-thumb .team-social {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0
+}
+
+.aboutus .team-style07:hover .team-thumb .team-social .styled-icons li:nth-child(1) {
+  left: 40px;
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  opacity: 1;
+  transition: all .4s ease-in-out 0s
+}
+
+.aboutus .team-style07 .team-thumb .team-social .styled-icons li:nth-child(1) {
+  position: absolute;
+  opacity: 0;
+  left: -10px;
+  bottom: -20px;
+  z-index: 10;
+  transition: all .3s ease-in-out
+}
+
+.aboutus .team-style07 .team-thumb .team-social .styled-icons li:nth-child(2) {
+  position: absolute;
+  opacity: 0;
+  left: 0;
+  right: 0;
+  bottom: -40px;
+  transition: all .3s ease-in-out
+}
+
+.aboutus .team-style07 .team-thumb .team-social .styled-icons li:nth-child(3) {
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  bottom: -20px;
+  transition: all .3s ease-in-out
+}
+
+.aboutus .team-style07:hover .team-thumb .team-social .styled-icons li:nth-child(3) {
+  position: absolute;
+  right: 40px;
+  bottom: 0;
+  opacity: 1;
+  transition: all .4s ease-in-out 0s
+}
+
+.aboutus .team-style07:hover .team-thumb .team-social .styled-icons li:nth-child(2) {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -20px;
+  opacity: 1;
+  transition: all .5s ease-in-out 0s
+}
+
+.aboutus .team-style07 .team-thumb .team-social .styled-icons li a {
+  background: #3457f1;
+  color: #fff;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  border: none;
+  font-size: 16px;
+  transition: all .3s ease-in-out
+}
+.aboutus .mb-1-9, .my-1-9 {
+  margin-bottom: 1.9rem;
+}
+
+.aboutus .styled-icons a {
+  border: 2px solid transparent;
+  color: #333;
+  display: inline-block;
+  font-size: 16px;
+  height: 36px;
+  line-height: 2;
+  margin-right: 4px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  width: 36px;
+  transition: all .2s ease;
+  border-radius: 50%
+}
+
+.aboutus .styled-icons li {
+  display: inline-block;
+  margin-bottom: 5px;
+  margin-top: 0;
+  padding-left: 0 !important
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+.checkout-steps > div {
+  border-bottom: 0.2rem solid #a0a0a0;
+  color: #154d9b;
+}
+.checkout-steps > div.active {
+  border-bottom: 0.2rem solid #f08000;
+  color: #000000;
+}
+
+.gallery, .cart {
+  margin-bottom: 3%;
+}
+
+.signin {
+  margin-bottom: 10%;
+}
